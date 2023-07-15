@@ -24,7 +24,7 @@ jobs:
         
       - name: Down Gcore cdn cidr
         run: |
-          curl -o ./cidr/gcore.json https://api.gcorelabs.com/cdn/public-net-list
+          curl --raw -o ./cidr/gcore.json https://api.gcorelabs.com/cdn/public-net-list
           
       - name: Commit changes
         run: |
