@@ -1,0 +1,26 @@
+name: Download CDN CIDR and Commit git
+
+on:
+  push:
+    branches:
+      - main
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@2
+        
+      - name: Down Gcore cdn cidr
+        run: |
+          curl -o ./cidr/gcore.json https://api.gcorelabs.com/cdn/public-net-list
+          
+      - name: Commit changes
+        run: |
+          git config --global user.name "github_job"
+          git config --global user.email "jesn2013@hotmail.com"
+          git add .
+          git commit -m "update cdn cidr"
+          git push
