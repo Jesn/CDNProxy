@@ -13,6 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         
+      - name: Install curl
+        run: sudo apt-get install -y curl
+        
       - name: Down Gcore cdn cidr
         run: |
           curl -o ./cidr/gcore.json https://api.gcorelabs.com/cdn/public-net-list
