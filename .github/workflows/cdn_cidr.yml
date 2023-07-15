@@ -26,6 +26,15 @@ jobs:
         run: |
           curl --raw -o ./cidr/gcore.json https://api.gcorelabs.com/cdn/public-net-list
           
+      - name: Down cloudfront cdn cidr
+        run: |
+          curl --raw -o ./cidr/cloudfront.json https://d7uri8nf7uskq.cloudfront.net/tools/list-cloudfront-ips
+          
+      - name: Down cloudflare cdn cidr
+        run: |
+          curl --raw -o ./cidr/cloudflare-ipv4.json https://www.cloudflare.com/ips-v4
+          curl --raw -o ./cifr/cloudflare-ipv6.json https://www.cloudflare.com/ips-v6
+          
       - name: Commit changes
         run: |
           git config --global user.name "github_job"
