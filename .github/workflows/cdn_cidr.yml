@@ -1,8 +1,6 @@
 name: Download CDN CIDR and Commit git
 
-on:
-  schedule:
-    - cron: "0 17 * * *"
+on: push
   
 jobs:
   build:
@@ -33,6 +31,18 @@ jobs:
         run: |
           curl --raw -o ./cidr/cloudflare-ipv4.json https://www.cloudflare.com/ips-v4
           curl --raw -o ./cidr/cloudflare-ipv6.json https://www.cloudflare.com/ips-v6
+          
+      # https://github.com/marketplace/actions/up2qn-action
+      - name: update to qiniu oss   
+        uses: luochongfei/up2qn@master
+        with:
+          bucket: wechaty
+          zone: 华东
+          access_key: ${{ secrets.QINIU_AK }}
+          secret_key: ${{secrets.QINIU_SK }}
+          local_dir: ./cidr
+          target_dir: /CDNProxy
+        
           
       - name: Commit changes
         run: |
