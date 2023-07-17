@@ -1,6 +1,8 @@
 name: Download CDN CIDR and Commit git
 
-on: push
+on:
+  schedule:
+    - cron: "0 17 * * *" # 北京时间凌晨1点执行
   
 jobs:
   build:
