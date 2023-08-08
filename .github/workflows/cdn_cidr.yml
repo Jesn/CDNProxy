@@ -47,6 +47,7 @@ jobs:
         
           
       - name: Commit changes
+        if: steps.git-check.outputs.changed == 'true'
         run: |
           git config --global user.name "github_job"
           git config --global user.email "jesn2013@hotmail.com"
