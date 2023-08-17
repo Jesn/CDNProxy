@@ -54,7 +54,7 @@ jobs:
         run: |
           git config --global user.name "github_job"
           git config --global user.email "jesn2013@hotmail.com"
-          git pull origin main
           git add .
           git commit -m "update cdn cidr"
+          git pull origin main
           git push
