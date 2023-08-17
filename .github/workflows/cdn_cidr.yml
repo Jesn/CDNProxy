@@ -23,7 +23,8 @@ jobs:
         
       - name: Down Gcore cdn cidr
         run: |
-          curl --raw -o ./cidr/gcore.json https://api.gcorelabs.com/cdn/public-net-list
+          # curl --raw -o ./cidr/gcore.json https://api.gcorelabs.com/cdn/public-net-list
+            curl --raw -o ./cidr/gcore.json https://api.gcore.com/cdn/public-ip-list
           
       - name: Down cloudfront cdn cidr
         run: |
